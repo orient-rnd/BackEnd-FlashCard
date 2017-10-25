@@ -15,6 +15,8 @@ namespace Flashcard.AppServices.APIs.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
+
+            throw new InvalidOperationException("Invalid operation.");
             return new string[] { "value1", "value2" };
         }
 
