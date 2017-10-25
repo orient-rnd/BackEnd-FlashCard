@@ -9,15 +9,17 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "1. AppServices", "1. AppSer
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "3. Infrastructure", "3. Infrastructure", "{D94F140B-3598-4811-A3A7-E23EB8536A64}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flashcard.Infrastructure.MongoDb", "Flashcard.Infrastructure.MongoDb\Flashcard.Infrastructure.MongoDb.csproj", "{FCC1BAAB-D922-4FF2-8F1E-0BBAD9C74F7F}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Flashcard.Infrastructure.MongoDb", "Flashcard.Infrastructure.MongoDb\Flashcard.Infrastructure.MongoDb.csproj", "{FCC1BAAB-D922-4FF2-8F1E-0BBAD9C74F7F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "2. BussinessLogic", "2. BussinessLogic", "{29DF009F-C9DC-463B-9709-268ABD705B7F}"
 EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "4. Domains", "4. Domains", "{F76517E7-531C-4649-9F0C-C08B7CD8CEDE}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlashCard.Domains", "FlashCard.Domains\FlashCard.Domains.csproj", "{7A00EB48-8907-4268-B599-3E3A5AFCA4D6}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlashCard.Domains", "FlashCard.Domains\FlashCard.Domains.csproj", "{7A00EB48-8907-4268-B599-3E3A5AFCA4D6}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "FlashCard.BusinessLogic", "FlashCard.BusinessLogic\FlashCard.BusinessLogic.csproj", "{6989725C-7412-4B9E-AEC0-9017DA58B930}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlashCard.BusinessLogic", "FlashCard.BusinessLogic\FlashCard.BusinessLogic.csproj", "{6989725C-7412-4B9E-AEC0-9017DA58B930}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Common", "5. Common", "{C682A4DC-3745-4B9D-B3EE-5CDFA31916D6}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
