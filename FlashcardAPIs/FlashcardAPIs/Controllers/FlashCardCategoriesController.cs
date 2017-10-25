@@ -54,8 +54,11 @@ namespace Flashcard.AppServices.APIs.Controllers
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public void Put(int id, [FromBody]string value)
+        public IActionResult Put(string id, [FromBody]FlashCardCategory category)
         {
+            var category1 = _mongoDbWriteRepository.Get<FlashCardCategory>(category.Id);
+            _mongoDbWriteRepository.Replace(category);
+            return Ok(category1);
         }
 
         // DELETE api/values/5
