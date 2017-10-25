@@ -6,6 +6,6 @@ namespace FlashCard.BusinessLogic
 {
     public class FlashcardBusinessLogic : IFlashcardBusinessLogic
     {
-
+        //void CreateNewCategory(CreateNewCategoryRequest )
     }
 }

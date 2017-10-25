@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Flashcard.Infrastructure.MongoDb;
+using FlashCard.BusinessLogic;
 
 namespace FlashcardAPIs
 {
@@ -24,6 +26,21 @@ namespace FlashcardAPIs
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc();
+
+            services.AddSingleton<IMongoDbWriteRepository>(sp =>
+            {
+                return new MongoDbWriteRepository("mongodb://interns2:interns2@ds117485.mlab.com:17485/interns2");
+            });
+
+            //services.AddSingleton<FlashcardBusinessLogic>();
+            services.AddSingleton<IFlashcardBusinessLogic>(new FlashcardBusinessLogic());
+            // Add Cors
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -34,6 +51,7 @@ namespace FlashcardAPIs
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors("MyPolicy");
             app.UseMvc();
         }
     }
