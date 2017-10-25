@@ -8,6 +8,8 @@ using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
+using Flashcard.Infrastructure.MongoDb;
+using FlashCard.BusinessLogic;
 using Flashcard.AppServices.APIs.Filters;
 using Swashbuckle.AspNetCore.Swagger;
 
@@ -28,6 +30,21 @@ namespace FlashcardAPIs
             services.AddMvc(mvcOptions => mvcOptions.Filters.Add(new GlobalExceptionFilterAttribute()));
             services.AddMvc();
 
+            services.AddSingleton<IMongoDbWriteRepository>(sp =>
+            {
+                return new MongoDbWriteRepository("mongodb://interns2:interns2@ds117485.mlab.com:17485/interns2");
+            });
+
+            //services.AddSingleton<FlashcardBusinessLogic>();
+            services.AddSingleton<IFlashcardBusinessLogic>(new FlashcardBusinessLogic());
+            // Add Cors
+            services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
+            {
+                builder.AllowAnyOrigin()
+                       .AllowAnyMethod()
+                       .AllowAnyHeader();
+            }));
+
             // Register the Swagger generator, defining one or more Swagger documents
             services.AddSwaggerGen(c =>
             {
@@ -43,6 +60,7 @@ namespace FlashcardAPIs
                 app.UseDeveloperExceptionPage();
             }
 
+            app.UseCors("MyPolicy");
             // Enable middleware to serve generated Swagger as a JSON endpoint.
             app.UseSwagger();
 

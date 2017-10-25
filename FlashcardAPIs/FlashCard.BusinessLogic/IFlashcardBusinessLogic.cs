@@ -4,7 +4,7 @@ using System.Text;
 
 namespace FlashCard.BusinessLogic
 {
-    interface IFlashcardBusinessLogic
+    public interface IFlashcardBusinessLogic
     {
     }
 }

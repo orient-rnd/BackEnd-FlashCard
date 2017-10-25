@@ -5,6 +5,7 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Folder Include="Configs\" />
     <Folder Include="wwwroot\" />
   </ItemGroup>
 
@@ -15,6 +16,12 @@
 
   <ItemGroup>
     <DotNetCliToolReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Tools" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\FlashCard.BusinessLogic\FlashCard.BusinessLogic.csproj" />
+    <ProjectReference Include="..\FlashCard.Domains\FlashCard.Domains.csproj" />
+    <ProjectReference Include="..\Flashcard.Infrastructure.MongoDb\Flashcard.Infrastructure.MongoDb.csproj" />
   </ItemGroup>
 
 </Project>
