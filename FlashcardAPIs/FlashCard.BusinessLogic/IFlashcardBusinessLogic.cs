@@ -13,6 +13,10 @@ namespace FlashCard.BusinessLogic
 
         void UpdateFlashCardCategory(UpdateFlashCardCategoryRequest request);
 
+        void DeleteFlashCardCategory(DeleteFlashCardCategoryRequest request);
+
         void CreateFlashCard(CreateFlashCardRequest request);
+
+        
     }
 }
