@@ -40,7 +40,7 @@ namespace Flashcard.AppServices.APIs.Controllers
         {
             var request = new GetFlashCardCategoryRequest() { Id = id };
             var reponse = _flashcardBusinessLogic.GetFlashCardCategory(request);
-            return Ok(reponse);
+            return Ok(reponse.FirstOrDefault());
         }
 
         // POST api/values

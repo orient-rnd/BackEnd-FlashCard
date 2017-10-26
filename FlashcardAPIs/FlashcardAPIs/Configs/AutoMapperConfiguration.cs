@@ -15,7 +15,7 @@ namespace Flashcard.AppServices.APIs.Configs
             var config = new MapperConfiguration(cfg =>
             {
                 cfg.CreateMap<CreateFlashCardCategoryRequest, FlashCardCategory>();
-                cfg.CreateMap<List<FlashCardCategory>, List<GetFlashCardCategoryResponse>>();
+                cfg.CreateMap<FlashCardCategory, GetFlashCardCategoryResponse>();
                 cfg.CreateMap<CreateFlashCardRequest, FlashCards>();
             });
             return config;
