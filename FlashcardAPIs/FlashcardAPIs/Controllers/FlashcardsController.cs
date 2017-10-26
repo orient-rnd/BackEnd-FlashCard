@@ -27,10 +27,11 @@ namespace Flashcard.AppServices.APIs.Controllers
         [HttpGet]
         public IEnumerable<string> Get()
         {
-            var cate = new FlashCardCategory();
-            cate.Name = "abc";
+            //throw new InvalidOperationException("Invalid operation.");
+            //var cate = new FlashCardCategory();
+            //cate.Name = "abc";
 
-            _mongoDbWriteRepository.Create(cate);
+            //_mongoDbWriteRepository.Create(cate);
             return new string[] { "value1", "value2" };
         }
 

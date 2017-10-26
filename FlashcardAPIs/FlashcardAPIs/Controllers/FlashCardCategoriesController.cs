@@ -8,6 +8,7 @@ using FlashCard.BusinessLogic;
 
 using Flashcard.Infrastructure.MongoDb;
 using Flashcard.AppServices.APIs.Models;
+using MongoDB.Driver;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -27,16 +28,22 @@ namespace Flashcard.AppServices.APIs.Controllers
 
         // GET: api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
-            return new string[] { "value1", "value2" };
+            var filter = Builders<FlashCardCategory>.Filter.Empty;
+
+            var cates = _mongoDbWriteRepository.Find(filter).ToList();
+
+            return Ok(cates);
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(string id)
         {
-            return "value";
+            var cates = _mongoDbWriteRepository.Get<FlashCardCategory>(id);
+
+            return Ok(cates);
         }
 
         // POST api/values
