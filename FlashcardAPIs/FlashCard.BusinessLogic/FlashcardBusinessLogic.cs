@@ -46,6 +46,12 @@ namespace FlashCard.BusinessLogic
             _mongoDbWriteRepository.Replace(cate);
         }
 
+        public void DeleteFlashCardCategory(DeleteFlashCardCategoryRequest request)
+        {
+            var catef = _mapper.Map<DeleteFlashCardCategoryRequest, FlashCardCategory>(request);
+            _mongoDbWriteRepository.Delete(catef);
+        }
+
         public void CreateFlashCard(CreateFlashCardRequest request)
         {
             var flashCard = _mapper.Map<CreateFlashCardRequest, FlashCards>(request);
