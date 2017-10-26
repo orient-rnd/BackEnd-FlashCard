@@ -5,6 +5,11 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.Identity" Version="2.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Flashcard.Infrastructure.Identity.MongoDb\Flashcard.Infrastructure.Identity.MongoDb.csproj" />
     <ProjectReference Include="..\Flashcard.Infrastructure.MongoDb\Flashcard.Infrastructure.MongoDb.csproj" />
   </ItemGroup>
 

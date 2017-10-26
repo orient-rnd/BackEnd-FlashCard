@@ -6,6 +6,8 @@ namespace FlashCard.Domains.RequestResponseMessages
 {
     public class GetFlashCardCategoryResponse
     {
+        public string Id { get; set; }
+
         public string Name { get; set; }
 
         public string UserId { get; set; }
