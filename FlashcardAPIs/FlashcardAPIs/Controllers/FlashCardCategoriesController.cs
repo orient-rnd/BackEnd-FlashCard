@@ -9,6 +9,7 @@ using FlashCard.BusinessLogic;
 using Flashcard.Infrastructure.MongoDb;
 using Flashcard.AppServices.APIs.Models;
 using MongoDB.Driver;
+using FlashCard.Domains.RequestResponseMessages;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -18,54 +19,49 @@ namespace Flashcard.AppServices.APIs.Controllers
     public class FlashCardCategoriesController : Controller
     {
         private readonly IFlashcardBusinessLogic _flashcardBusinessLogic;
-        private readonly IMongoDbWriteRepository _mongoDbWriteRepository;
 
-        public FlashCardCategoriesController(IFlashcardBusinessLogic flashcardBusinessLogic, IMongoDbWriteRepository mongoDbWriteRepository)
+        public FlashCardCategoriesController(IFlashcardBusinessLogic flashcardBusinessLogic)
         {
             _flashcardBusinessLogic = flashcardBusinessLogic;
-            _mongoDbWriteRepository = mongoDbWriteRepository;
         }
 
         // GET: api/values
         [HttpGet]
         public IActionResult Get()
         {
-            var filter = Builders<FlashCardCategory>.Filter.Empty;
-
-            var cates = _mongoDbWriteRepository.Find(filter).ToList();
-
-            return Ok(cates);
+            var request = new GetFlashCardCategoryRequest();
+            var reponse = _flashcardBusinessLogic.GetFlashCardCategory(request);
+            return Ok(reponse);
         }
 
         // GET api/values/5
         [HttpGet("{id}")]
         public IActionResult Get(string id)
         {
-            var cates = _mongoDbWriteRepository.Get<FlashCardCategory>(id);
-
-            return Ok(cates);
+            var request = new GetFlashCardCategoryRequest() { Id = id };
+            var reponse = _flashcardBusinessLogic.GetFlashCardCategory(request);
+            return Ok(reponse);
         }
 
         // POST api/values
         [HttpPost]
-        public IActionResult Post([FromBody]FlashCardCategory category)
+        public IActionResult Post([FromBody]CreateFlashCardCategoryRequest request)
         {
             if (!ModelState.IsValid)
             {
                 return new UnprocessableEntityObjectResult(ModelState);
             }
-            category.Id = Guid.NewGuid().ToString();
-            _mongoDbWriteRepository.Create(category);
+            _flashcardBusinessLogic.CreateFlashCardCategory(request);
             return Ok();
         }
 
         // PUT api/values/5
         [HttpPut("{id}")]
-        public IActionResult Put(string id, [FromBody]FlashCardCategory category)
+        public IActionResult Put(string id, [FromBody]UpdateFlashCardCategoryRequest request)
         {
-            var tempCategory = _mongoDbWriteRepository.Get<FlashCardCategory>(category.Id);
-            _mongoDbWriteRepository.Replace(category);
-            return Ok(tempCategory);
+            request.Id = id;
+            _flashcardBusinessLogic.UpdateFlashCardCategory(request);
+            return Ok();
         }
 
         // DELETE api/values/5

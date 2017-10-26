@@ -7,6 +7,7 @@ using FlashCard.BusinessLogic;
 using Flashcard.Infrastructure.MongoDb;
 using FlashCard.Models.Domains;
 using Flashcard.AppServices.APIs.Models;
+using FlashCard.Domains.RequestResponseMessages;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -16,12 +17,10 @@ namespace Flashcard.AppServices.APIs.Controllers
     public class FlashcardsController : Controller
     {
         private readonly IFlashcardBusinessLogic _flashcardBusinessLogic;
-        private readonly IMongoDbWriteRepository _mongoDbWriteRepository;
 
-        public FlashcardsController(IFlashcardBusinessLogic flashcardBusinessLogic, IMongoDbWriteRepository mongoDbWriteRepository)
+        public FlashcardsController(IFlashcardBusinessLogic flashcardBusinessLogic)
         {
             _flashcardBusinessLogic = flashcardBusinessLogic;
-            _mongoDbWriteRepository = mongoDbWriteRepository;
         }
 
         // GET: api/values
@@ -33,22 +32,23 @@ namespace Flashcard.AppServices.APIs.Controllers
             //cate.Name = "abc";
 
             //_mongoDbWriteRepository.Create(cate);
-        {   
-            
+
+
             return new string[] { "value1", "value2" };
         }
 
+
         [HttpPost]
-        public IActionResult Post([FromBody]FlashCards flashCard)
+        public IActionResult Post([FromBody]CreateFlashCardRequest request)
         {
             if (!ModelState.IsValid)
             {
                 return new UnprocessableEntityObjectResult(ModelState);
             }
-            flashCard.Id = Guid.NewGuid().ToString();
-            _mongoDbWriteRepository.Create(flashCard);
+
+            _flashcardBusinessLogic.CreateFlashCard(request);
+
             return Ok();
         }
-
     }
 }

@@ -13,6 +13,8 @@ using FlashCard.BusinessLogic;
 using Flashcard.AppServices.APIs.Filters;
 using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.AspNetCore.Routing;
+using AutoMapper;
+using Flashcard.AppServices.APIs.Configs;
 
 namespace FlashcardAPIs
 {
@@ -37,7 +39,11 @@ namespace FlashcardAPIs
             });
 
             //services.AddSingleton<FlashcardBusinessLogic>();
-            services.AddSingleton<IFlashcardBusinessLogic>(new FlashcardBusinessLogic());
+            services.AddSingleton<IFlashcardBusinessLogic, FlashcardBusinessLogic>();
+
+
+            services.AddSingleton<IMapper>(new Mapper(AutoMapperConfiguration.RegisterMapper()));
+
             // Add Cors
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
