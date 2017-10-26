@@ -32,8 +32,7 @@ namespace Flashcard.AppServices.APIs.Controllers
             //var cate = new FlashCardCategory();
             //cate.Name = "abc";
 
-            //_mongoDbWriteRepository.Create(cate);
-        {   
+            //_mongoDbWriteRepository.Create(cate); 
             
             return new string[] { "value1", "value2" };
         }
