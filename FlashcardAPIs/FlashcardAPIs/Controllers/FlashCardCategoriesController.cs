@@ -15,7 +15,7 @@ using FlashCard.Domains.RequestResponseMessages;
 
 namespace Flashcard.AppServices.APIs.Controllers
 {
-    [Route("api/[controller]")]
+    [Route("[controller]")]
     public class FlashCardCategoriesController : Controller
     {
         private readonly IFlashcardBusinessLogic _flashcardBusinessLogic;
