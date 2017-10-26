@@ -9,7 +9,7 @@ using System.ComponentModel.DataAnnotations;
 namespace FlashCard.Models.Domains
 {
     [BsonIgnoreExtraElements]
-    public class FlashCard : AuditableEntityBase, IAggregateRoot
+    public class FlashCards : AuditableEntityBase, IAggregateRoot
     {
         [Required(ErrorMessage = "Fill the blank, Please!!")]
         [StringLength(100, MinimumLength = 5)]
