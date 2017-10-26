@@ -43,6 +43,7 @@ namespace FlashCard.BusinessLogic
         public void UpdateFlashCardCategory(UpdateFlashCardCategoryRequest request)
         {
             var cate = _mapper.Map<UpdateFlashCardCategoryRequest, FlashCardCategory>(request);
+            cate.Id = request.Id;
             _mongoDbWriteRepository.Replace(cate);
         }
 

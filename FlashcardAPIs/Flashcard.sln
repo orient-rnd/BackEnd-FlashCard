@@ -21,6 +21,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "5. Common", "5. Common", "{
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "FlashCard.BusinessLogic", "FlashCard.BusinessLogic\FlashCard.BusinessLogic.csproj", "{DFA1FF39-727E-41AD-A2FF-FB3358075299}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Flashcard.Infrastructure.Identity.MongoDb", "Flashcard.Infrastructure.Identity.MongoDb\Flashcard.Infrastructure.Identity.MongoDb.csproj", "{2468BE20-4AB6-4AE2-806F-5F861D5B0283}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -43,6 +45,10 @@ Global
 		{DFA1FF39-727E-41AD-A2FF-FB3358075299}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{DFA1FF39-727E-41AD-A2FF-FB3358075299}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{DFA1FF39-727E-41AD-A2FF-FB3358075299}.Release|Any CPU.Build.0 = Release|Any CPU
+		{2468BE20-4AB6-4AE2-806F-5F861D5B0283}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{2468BE20-4AB6-4AE2-806F-5F861D5B0283}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{2468BE20-4AB6-4AE2-806F-5F861D5B0283}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{2468BE20-4AB6-4AE2-806F-5F861D5B0283}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -52,6 +58,7 @@ Global
 		{FCC1BAAB-D922-4FF2-8F1E-0BBAD9C74F7F} = {D94F140B-3598-4811-A3A7-E23EB8536A64}
 		{7A00EB48-8907-4268-B599-3E3A5AFCA4D6} = {F76517E7-531C-4649-9F0C-C08B7CD8CEDE}
 		{DFA1FF39-727E-41AD-A2FF-FB3358075299} = {29DF009F-C9DC-463B-9709-268ABD705B7F}
+		{2468BE20-4AB6-4AE2-806F-5F861D5B0283} = {D94F140B-3598-4811-A3A7-E23EB8536A64}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {57C14C94-D4F7-4AC8-B9CA-F0E6759138D1}

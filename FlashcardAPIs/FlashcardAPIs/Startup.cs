@@ -15,6 +15,9 @@ using Swashbuckle.AspNetCore.Swagger;
 using Microsoft.AspNetCore.Routing;
 using AutoMapper;
 using Flashcard.AppServices.APIs.Configs;
+using FlashCard.Models.Domains;
+using Microsoft.AspNetCore.Identity;
+using FlashCard.Domains.Services;
 
 namespace FlashcardAPIs
 {
@@ -41,9 +44,36 @@ namespace FlashcardAPIs
             //services.AddSingleton<FlashcardBusinessLogic>();
             services.AddSingleton<IFlashcardBusinessLogic, FlashcardBusinessLogic>();
 
+            
 
             services.AddSingleton<IMapper>(new Mapper(AutoMapperConfiguration.RegisterMapper()));
 
+
+            services.AddIdentity<User, Role>(
+                identityOptions =>
+                {
+                    // Email settings
+                    identityOptions.User.RequireUniqueEmail = true;
+
+                    // Password settings
+                    identityOptions.Password.RequiredLength = 8;
+                    identityOptions.Password.RequireDigit = false;
+                    identityOptions.Password.RequireNonAlphanumeric = false;
+                    identityOptions.Password.RequireUppercase = false;
+                    identityOptions.Password.RequireLowercase = false;
+
+                    // Lockout settings
+                    identityOptions.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(30);
+                    identityOptions.Lockout.MaxFailedAccessAttempts = 10;
+
+                    // Cookie settings
+                    //identityOptions.Cookies.ApplicationCookie.ExpireTimeSpan = TimeSpan.FromDays(365);
+                    //identityOptions.Cookies.ApplicationCookie.LoginPath = "/Account/Login";
+                    //identityOptions.Cookies.ApplicationCookie.LogoutPath = "/Account/Logout";
+                })
+                .AddDefaultTokenProviders();
+
+            services.AddSingleton<IUserService, UserService>();
             // Add Cors
             services.AddCors(o => o.AddPolicy("MyPolicy", builder =>
             {
