@@ -16,7 +16,6 @@ namespace FlashCard.BusinessLogic
         void DeleteFlashCardCategory(DeleteFlashCardCategoryRequest request);
 
         void CreateFlashCard(CreateFlashCardRequest request);
-
-        
+        void Delete<T>(string id);
     }
 }

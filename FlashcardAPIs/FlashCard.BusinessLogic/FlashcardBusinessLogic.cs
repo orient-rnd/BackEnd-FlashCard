@@ -58,5 +58,10 @@ namespace FlashCard.BusinessLogic
             var flashCard = _mapper.Map<CreateFlashCardRequest, FlashCards>(request);
             _mongoDbWriteRepository.Create(flashCard);
         }
+
+        public void Delete<T>(string id)
+        {
+            throw new NotImplementedException();
+        }
     }
 }
