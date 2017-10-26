@@ -70,17 +70,6 @@ namespace FlashcardAPIs
                 c.SwaggerEndpoint("/swagger/v1/swagger.json", "My API V1");
             });
 
-            //app.Run(context =>
-            //{
-            //    if (context.Request.Path.Equals("/"))
-            //    {
-            //        context.Response.Redirect("/swagger/");
-                    
-            //    }
-
-            //    return Task.CompletedTask;
-            //});
-
             app.UseMvc();
 
 

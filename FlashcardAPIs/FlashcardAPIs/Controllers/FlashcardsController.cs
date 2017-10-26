@@ -6,6 +6,7 @@ using Microsoft.AspNetCore.Mvc;
 using FlashCard.BusinessLogic;
 using Flashcard.Infrastructure.MongoDb;
 using FlashCard.Models.Domains;
+using Flashcard.AppServices.APIs.Models;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -26,12 +27,21 @@ namespace Flashcard.AppServices.APIs.Controllers
         // GET: api/values
         [HttpGet]
         public IEnumerable<string> Get()
-        {
-            var cate = new FlashCardCategory();
-            cate.Name = "abc";
-
-            _mongoDbWriteRepository.Create(cate);
+        {   
+            
             return new string[] { "value1", "value2" };
+        }
+
+        [HttpPost]
+        public IActionResult Post([FromBody]FlashCards flashCard)
+        {
+            if (!ModelState.IsValid)
+            {
+                return new UnprocessableEntityObjectResult(ModelState);
+            }
+            flashCard.Id = Guid.NewGuid().ToString();
+            _mongoDbWriteRepository.Create(flashCard);
+            return Ok();
         }
 
     }
