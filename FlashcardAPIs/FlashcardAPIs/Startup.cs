@@ -12,6 +12,7 @@ using Flashcard.Infrastructure.MongoDb;
 using FlashCard.BusinessLogic;
 using Flashcard.AppServices.APIs.Filters;
 using Swashbuckle.AspNetCore.Swagger;
+using Microsoft.AspNetCore.Routing;
 
 namespace FlashcardAPIs
 {
@@ -53,7 +54,7 @@ namespace FlashcardAPIs
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IHostingEnvironment env, ILoggerFactory loggerFactory)
+        public void Configure(IApplicationBuilder app, IHostingEnvironment env)
         {
             if (env.IsDevelopment())
             {
@@ -71,7 +72,6 @@ namespace FlashcardAPIs
             });
 
             app.UseMvc();
-
 
         }
     }

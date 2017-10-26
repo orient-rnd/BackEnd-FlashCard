@@ -27,6 +27,12 @@ namespace Flashcard.AppServices.APIs.Controllers
         // GET: api/values
         [HttpGet]
         public IEnumerable<string> Get()
+        {
+            //throw new InvalidOperationException("Invalid operation.");
+            //var cate = new FlashCardCategory();
+            //cate.Name = "abc";
+
+            //_mongoDbWriteRepository.Create(cate);
         {   
             
             return new string[] { "value1", "value2" };
