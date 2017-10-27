@@ -17,6 +17,7 @@ namespace FlashCard.BusinessLogic
 
         void CreateFlashCard(CreateFlashCardRequest request);
 
-        
+        List<GetFlashCardResponse> GetFlashCard(GetFlashCardRequest request);
+
     }
 }

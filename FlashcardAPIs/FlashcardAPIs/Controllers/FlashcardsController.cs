@@ -8,6 +8,7 @@ using Flashcard.Infrastructure.MongoDb;
 using FlashCard.Models.Domains;
 using Flashcard.AppServices.APIs.Models;
 using FlashCard.Domains.RequestResponseMessages;
+using MongoDB.Driver;
 
 // For more information on enabling Web API for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
 
@@ -25,18 +26,24 @@ namespace Flashcard.AppServices.APIs.Controllers
 
         // GET: api/values
         [HttpGet]
-        public IEnumerable<string> Get()
+        public IActionResult Get()
         {
             //throw new InvalidOperationException("Invalid operation.");
-            //var cate = new FlashCardCategory();
-            //cate.Name = "abc";
 
-            //_mongoDbWriteRepository.Create(cate);
+            var req = new GetFlashCardRequest();
+            var res = _flashcardBusinessLogic.GetFlashCard(req);
 
-
-            return new string[] { "value1", "value2" };
+            return Ok(res);
         }
 
+        [HttpGet("{id}")]
+        public IActionResult Get(string id)
+        {
+            var req = new GetFlashCardRequest() { Id = id };
+            var res = _flashcardBusinessLogic.GetFlashCard(req);
+
+            return Ok(res.FirstOrDefault());
+        }
 
         [HttpPost]
         public IActionResult Post([FromBody]CreateFlashCardRequest request)
