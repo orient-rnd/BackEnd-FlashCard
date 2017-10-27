@@ -14,7 +14,7 @@ namespace FlashCard.BusinessLogic
         void UpdateFlashCardCategory(UpdateFlashCardCategoryRequest request);
 
         void DeleteFlashCardCategory(DeleteFlashCardCategoryRequest request);
-
+        void DeleteFlashCard(DeleteFlashCardRequest request);
         void CreateFlashCard(CreateFlashCardRequest request);
 
         List<GetFlashCardResponse> GetFlashCard(GetFlashCardRequest request);
