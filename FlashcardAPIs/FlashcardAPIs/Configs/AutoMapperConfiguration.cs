@@ -17,6 +17,7 @@ namespace Flashcard.AppServices.APIs.Configs
                 cfg.CreateMap<CreateFlashCardCategoryRequest, FlashCardCategory>();
                 cfg.CreateMap<FlashCardCategory, GetFlashCardCategoryResponse>();
                 cfg.CreateMap<CreateFlashCardRequest, FlashCards>();
+                cfg.CreateMap<FlashCards, GetFlashCardResponse>();
             });
             return config;
         }
