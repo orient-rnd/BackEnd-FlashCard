@@ -47,10 +47,6 @@ namespace Flashcard.AppServices.APIs.Controllers
         [HttpPost]
         public IActionResult Post([FromBody]CreateFlashCardCategoryRequest request)
         {
-            if (!ModelState.IsValid)
-            {
-                return new UnprocessableEntityObjectResult(ModelState);
-            }
             _flashcardBusinessLogic.CreateFlashCardCategory(request);
             return Ok();
         }
