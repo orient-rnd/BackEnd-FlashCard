@@ -59,6 +59,13 @@ namespace FlashCard.BusinessLogic
             _mongoDbWriteRepository.Create(flashCard);
         }
 
+        public void UpdateFlashCard(UpdateFlashCardRequest request)
+        {
+            var card = _mapper.Map<UpdateFlashCardRequest, FlashCards>(request);
+            card.Id = request.Id;
+            _mongoDbWriteRepository.Replace(card);
+        }
+
         public List<GetFlashCardResponse> GetFlashCard(GetFlashCardRequest request)
         {
             var filter = Builders<FlashCards>.Filter.Empty;
