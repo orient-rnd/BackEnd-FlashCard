@@ -58,6 +58,14 @@ namespace Flashcard.AppServices.APIs.Controllers
         {
             request.Id = id;
             _flashcardBusinessLogic.UpdateFlashCard(request);
+
+        // DELETE api/values/5
+        [HttpDelete("{id}")]
+        public IActionResult Delete(string id)
+        {
+            var request = new DeleteFlashCardRequest() { Id = id };
+            _flashcardBusinessLogic.DeleteFlashCard(request);
+
             return Ok();
         }
     }
