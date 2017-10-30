@@ -48,11 +48,6 @@ namespace Flashcard.AppServices.APIs.Controllers
         [HttpPost]
         public IActionResult Post([FromBody]CreateFlashCardRequest request)
         {
-            if (!ModelState.IsValid)
-            {
-                return new UnprocessableEntityObjectResult(ModelState);
-            }
-
             _flashcardBusinessLogic.CreateFlashCard(request);
 
             return Ok();
