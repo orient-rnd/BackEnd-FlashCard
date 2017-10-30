@@ -34,6 +34,7 @@ namespace FlashcardAPIs
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddMvc(mvcOptions => mvcOptions.Filters.Add(new GlobalExceptionFilterAttribute()));
+            services.AddMvc(mvcOptions => mvcOptions.Filters.Add(new GlobalValidationFilterAttribute()));
             services.AddMvc();
 
             services.AddSingleton<IMongoDbWriteRepository>(sp =>
