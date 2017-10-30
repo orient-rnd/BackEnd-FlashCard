@@ -20,5 +20,6 @@ namespace FlashCard.BusinessLogic
         void UpdateFlashCard(UpdateFlashCardRequest request);
 
         List<GetFlashCardResponse> GetFlashCard(GetFlashCardRequest request);
+        List<GetFlashCardResponse> GetFlashCardByCategoryId(GetFlashCardRequest request);
     }
 }

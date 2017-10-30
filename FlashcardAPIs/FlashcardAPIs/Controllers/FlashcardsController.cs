@@ -44,6 +44,14 @@ namespace Flashcard.AppServices.APIs.Controllers
 
             return Ok(res.FirstOrDefault());
         }
+        [HttpGet("{CategoryId}")]
+        public IActionResult Get(string id, string CategoryId)
+        {
+            var req = new GetFlashCardRequest() { Id = CategoryId };
+            var res = _flashcardBusinessLogic.GetFlashCardByCategoryId(req);
+            return Ok(res);
+        }
+
 
         [HttpPost]
         public IActionResult Post([FromBody]CreateFlashCardRequest request)
