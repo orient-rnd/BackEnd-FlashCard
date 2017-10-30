@@ -61,11 +61,19 @@ namespace Flashcard.AppServices.APIs.Controllers
             return Ok();
         }
 
+
         [HttpPut("{id}")]
         public IActionResult Put(string id, [FromBody]UpdateFlashCardRequest request)
         {
             request.Id = id;
             _flashcardBusinessLogic.UpdateFlashCard(request);
+            return Ok();
+        } 
+        [HttpDelete("{id}")]
+        public IActionResult Delete(string id)
+        {
+            var request = new DeleteFlashCardRequest() { Id = id };
+            _flashcardBusinessLogic.DeleteFlashCard(request);
             return Ok();
         }
 
