@@ -40,6 +40,7 @@ namespace FlashCard.BusinessLogic
             return responseCates;
         }
 
+
         public void UpdateFlashCardCategory(UpdateFlashCardCategoryRequest request)
         {
             var cate = _mapper.Map<UpdateFlashCardCategoryRequest, FlashCardCategory>(request);
@@ -49,7 +50,7 @@ namespace FlashCard.BusinessLogic
 
         public void DeleteFlashCardCategory(DeleteFlashCardCategoryRequest request)
         {
-           
+
             _mongoDbWriteRepository.Delete<FlashCardCategory>(request.Id);
         }
 
@@ -73,6 +74,21 @@ namespace FlashCard.BusinessLogic
             if (!string.IsNullOrWhiteSpace(request.Id))
             {
                 filter = filter & Builders<FlashCards>.Filter.Where(f => f.Id == request.Id);
+            }
+
+            var fcards = _mongoDbWriteRepository.Find(filter).ToList();
+            var responseFcards = _mapper.Map<List<FlashCards>, List<GetFlashCardResponse>>(fcards);
+
+            return responseFcards;
+        }
+
+        public List<GetFlashCardResponse> GetFlashCardByCategoryId(GetFlashCardRequest request)
+        {
+            var filter = Builders<FlashCards>.Filter.Empty;
+
+            if (!string.IsNullOrWhiteSpace(request.Id))
+            {
+                filter = filter & Builders<FlashCards>.Filter.Where(f => f.FlashCardCategoryId == request.Id);
             }
 
             var fcards = _mongoDbWriteRepository.Find(filter).ToList();
